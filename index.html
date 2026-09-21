@@ -581,7 +581,7 @@
 
   <script>
     let numbers = Array.from({length: 75}, (_, i) => i + 1);
-    let isRolling = false, isStopping = false, rouletteTimeout = null, currentSpeed = 40, stopStep = 0;
+    let isRolling = false, isStopping = false, rouletteTimeout = null, currentSpeed = 70, stopStep = 0;
     let extremeCount = 0, targetExtremeCount = 0;
     let isDoubleChance = false;
     let bgmEnabled = false;
@@ -789,7 +789,7 @@
       if (confirm('ビンゴゲームを完全にリセットして、最初から開始しますか？\n（現在の当選履歴やボードの記録はすべて消去されます）')) {
         if (rouletteTimeout) { clearTimeout(rouletteTimeout); rouletteTimeout = null; }
         numbers = Array.from({length: 75}, (_, i) => i + 1);
-        isRolling = false; isStopping = false; currentSpeed = 40; stopStep = 0;
+        isRolling = false; isStopping = false; currentSpeed = 70; stopStep = 0;
         isDoubleChance = false; extremeCount = 0; targetExtremeCount = 0;
 
         display.innerHTML = 'BINGO'; display.className = '';
@@ -903,7 +903,7 @@
       if (!isRolling && !isStopping) {
         document.querySelectorAll('.board-cell.latest-active').forEach(cell => cell.classList.remove('latest-active'));
 
-        isRolling = true; currentSpeed = 40; stopStep = 0;
+        isRolling = true; currentSpeed = 70; stopStep = 0;
         extremeCount = 0; targetExtremeCount = 0;
 
         if (numbers.length <= 70 && Math.random() < 0.15 && numbers.length >= 2) {
