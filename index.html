@@ -379,13 +379,24 @@
       .board-cell.active.latest-active { border-width: 2px !important; transform: translate3d(0,0,0) scale(1.15) !important; }
     }
   
-    /* ===== Wedding版：PC専用・キャラクター5倍 ===== */
-    @media (min-width: 1101px) {
+    /* ===== Wedding版：PC専用・キャラクター左右寄せ ===== */
+    @media (min-width:1101px) {
       .character {
         width: 1075px !important;
       }
+
+      .character.groom {
+        left: -500px !important;
+        right: auto !important;
+      }
+
+      .character.bride {
+        right: -500px !important;
+        left: auto !important;
+      }
     }
-</style>
+
+  </style>
 </head>
 <body>
 
