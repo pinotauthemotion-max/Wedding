@@ -451,6 +451,76 @@
       }
     }
 
+  
+    /* ===== Wedding版：テスト③ キャラクターアニメーション軽量化 ===== */
+    @media (min-width:1101px) {
+      /* 待機：上下移動だけ。回転をなくして描画負荷を軽減 */
+      .couple-stage:not(.starting):not(.rolling):not(.stopping):not(.celebrate) .character {
+        animation: coupleIdleLight 2.8s ease-in-out infinite;
+      }
+
+      /* START：移動＋軽い拡大だけ */
+      .couple-stage.starting .groom {
+        animation: groomStartLight .7s cubic-bezier(.18,.9,.25,1.2) both;
+      }
+      .couple-stage.starting .bride {
+        animation: brideStartLight .7s .08s cubic-bezier(.18,.9,.25,1.2) both;
+      }
+
+      /* 抽選中：上下移動だけ。回転・scaleを削除 */
+      .couple-stage.rolling .character {
+        animation: coupleRollingLight .45s infinite alternate ease-in-out;
+      }
+
+      /* STOP：移動だけ。回転・scaleを削除 */
+      .couple-stage.stopping .groom {
+        animation: groomLookLight .45s ease-out forwards;
+      }
+      .couple-stage.stopping .bride {
+        animation: brideLookLight .45s .05s ease-out forwards;
+      }
+
+      /* 結果：上下移動だけ。回転・scaleを削除 */
+      .couple-stage.celebrate .character {
+        animation: coupleCelebrateLight .7s ease-in-out infinite alternate;
+      }
+
+      @keyframes coupleIdleLight {
+        0%,100% { transform: translate3d(0,0,0); }
+        50% { transform: translate3d(0,-10px,0); }
+      }
+
+      @keyframes groomStartLight {
+        0% { transform: translate3d(-80px,20px,0) scale(.92); opacity:.2; }
+        70% { transform: translate3d(8px,-24px,0) scale(1.04); opacity:1; }
+        100% { transform: translate3d(0,0,0) scale(1); opacity:1; }
+      }
+
+      @keyframes brideStartLight {
+        0% { transform: translate3d(80px,20px,0) scale(.92); opacity:.2; }
+        70% { transform: translate3d(-8px,-24px,0) scale(1.04); opacity:1; }
+        100% { transform: translate3d(0,0,0) scale(1); opacity:1; }
+      }
+
+      @keyframes coupleRollingLight {
+        from { transform: translate3d(0,0,0); }
+        to { transform: translate3d(0,-16px,0); }
+      }
+
+      @keyframes groomLookLight {
+        to { transform: translate3d(18px,-8px,0); }
+      }
+
+      @keyframes brideLookLight {
+        to { transform: translate3d(-18px,-8px,0); }
+      }
+
+      @keyframes coupleCelebrateLight {
+        from { transform: translate3d(0,0,0); }
+        to { transform: translate3d(0,-28px,0); }
+      }
+    }
+
   </style>
 </head>
 <body>
