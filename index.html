@@ -437,6 +437,20 @@
       }
     }
 
+  
+    /* ===== Wedding版：テスト② キャラクター発光・影 完全OFF ===== */
+    @media (min-width:1101px) {
+      .couple-stage .character,
+      .couple-stage.rolling .character,
+      .couple-stage.celebrate .groom,
+      .couple-stage.celebrate .bride {
+        filter: none !important;
+        -webkit-filter: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+    }
+
   </style>
 </head>
 <body>
