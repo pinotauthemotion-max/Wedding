@@ -410,6 +410,33 @@
       }
     }
 
+  
+    /* ===== Wedding版：キャラクター滑らか動作・60fpsテスト ===== */
+    @media (min-width:1101px) {
+      .couple-stage .character {
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+
+      .couple-stage .character .pose {
+        will-change: opacity;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+
+      /* 動作中の重いfilter計算を減らす */
+      .couple-stage.rolling .character {
+        filter: drop-shadow(0 0 10px var(--neon-blue)) !important;
+      }
+
+      .couple-stage.celebrate .groom,
+      .couple-stage.celebrate .bride {
+        filter: drop-shadow(0 0 18px currentColor) !important;
+      }
+    }
+
   </style>
 </head>
 <body>
